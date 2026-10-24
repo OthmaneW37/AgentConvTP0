@@ -65,12 +65,3 @@ Réponse  : Darija : salam, labas ? shukran bzaf w bslama !
            (6 mot(s) traduit(s))
 ```
 
-## Message d'erreur quand la question est vide
-
-Si le formulaire est soumis sans question, le message « Il manque le texte de la question » s'affiche en rouge. Il vient de plusieurs parties du code :
-
-- `Bb.envoyer()` : teste `question == null || question.isBlank()`, crée un `FacesMessage` de gravité `SEVERITY_ERROR` et l'ajoute avec `facesContext.addMessage(null, message)` (message global, non lié à un composant).
-- `Bb` : le `FacesContext` est injecté par CDI avec `@Inject`.
-- `Bb.envoyer()` retourne `null` : l'utilisateur reste sur la même page et dans la même vue, avec la même instance de `Bb` (portée `@ViewScoped`).
-- `index.xhtml` : `<h:messages globalOnly="true" showDetail="true" showSummary="false" errorStyle="color: red"/>` affiche le détail des messages globaux en rouge.
-- Si aucun rôle n'est choisi, l'erreur vient de `required="true"` et `requiredMessage` sur le `p:selectOneMenu`, affichée par `<h:message for="rolesysteme"/>`.
