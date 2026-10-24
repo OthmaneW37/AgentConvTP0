@@ -186,6 +186,9 @@ public class Bb implements Serializable {
                     are you tell them the average price of a meal.
                     """;
             this.listeRolesSysteme.add(new SelectItem(role, "Guide touristique"));
+
+            this.listeRolesSysteme.add(new SelectItem(
+                    GenerateurReponse.ROLE_TRADUCTEUR_DARIJA, "Traducteur Français-Darija"));
         }
 
         return this.listeRolesSysteme;
